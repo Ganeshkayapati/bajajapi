@@ -1,41 +1,27 @@
 BFHL API
 
-Small Express API that implements the /bfhl POST endpoint required by the assignment.
-It accepts a JSON body with a single key data (an array of tokens) and returns analyses: even/odd numbers, alphabets (uppercase), special characters, sum (string), and concat_string per spec.
+Small Express API that implements the required /bfhl POST endpoint.
+Accepts a JSON body with a single key data (an array of tokens) and returns analyses: even/odd numbers, alphabets (uppercase), special characters, sum (string), and concat_string per the assignment spec.
 
-Features
+Live endpoint (use this for submission)
 
-POST /bfhl — main endpoint (see Request / Response)
+POST https://bajajapi-vflx.onrender.com/bfhl
 
-GET /bfhl — quick health/operation check
+Example:
 
-Environment-configurable user_id, email, and roll_number
-
-Numbers in responses are returned as strings (per spec)
-
-Robust handling of multi-letter alphabet tokens (e.g. "ABcD")
-
-concat_string built by collecting all alphabet characters (in token order), reversing them, and applying alternating caps starting with UPPER
-
-Files
-
-index.js — main server
-
-package.json — scripts & dependencies
-
-.env.example — example environment variables
-
-.gitignore — recommended ignore rules
+curl -X POST https://bajajapi-vflx.onrender.com/bfhl \
+  -H "Content-Type: application/json" \
+  -d '{"data":["a","1","334","4","R","$"]}'
 
 Quick start (local)
 
-Clone the repo
+Clone the repo:
 
 git clone https://github.com/<your-username>/<your-repo>.git
 cd <your-repo>
 
 
-Install dependencies
+Install dependencies:
 
 npm install
 
@@ -49,12 +35,12 @@ REG_NO=ABCD123
 PORT=3500
 
 
-Start the server
+Start the server:
 
 npm start
 
 
-Test with curl / Postman:
+Local testing:
 
 curl -X POST http://localhost:3500/bfhl \
   -H "Content-Type: application/json" \
